@@ -1,0 +1,86 @@
+html,
+body {
+  margin: 0;
+  padding: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+#map {
+  width: 100%; /* Adjust width to your desired size */
+  height: 500px; /* Adjust height to your desired size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+  border-radius: 8px; /* Optional: rounded corners */
+  position: relative;
+}
+
+#map svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+#map svg circle {
+    pointer-events: auto; /* Allow interaction only with circles */
+  }
+  #map circle, .legend > div {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+      in oklch,
+      var(--color-departures) calc(100% * var(--departure-ratio)),
+      var(--color-arrivals)
+    );
+    fill: var(--color);
+  }
+  
+  .legend {
+    display: flex;
+    gap: 1px; /* Just enough to separate colors */
+    justify-content: space-between;
+    margin-block: 1em; /* Space between map and legend */
+    width: 100%; /* Span full width */
+  }
+  
+  .legend-item {
+    flex: 1; /* Make each item take equal space */
+    text-align: center;
+    padding: 0.5em 0; /* Padding for better appearance */
+    color: white;
+    font-weight: bold;
+    background-color: var(--color); /* Use the same dynamic color */
+  }
+  
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  margin-left: auto;
+}
+
+input[type="range"] {
+  width: 400px;
+  margin-left: auto;
+}
+
+#time-container {
+  display: block; /* Make sure both time and any-time appear on a new line */
+}
+
+#selected-time,
+#any-time {
+  display: block;
+  text-align: right;
+}
+
+em {
+  font-style: italic;
+  color: #777;
+  display: block; /* Ensure any-time is on its own line */
+}

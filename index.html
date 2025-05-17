@@ -5,10 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="global.css" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="map.css" />
+    <!-- Mapbox GL JS CSS -->
+    <link
+        href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+        rel="stylesheet"
+    />
+    <script src="map.js" type="module"></script>
     <title>Bike Dream</title>
 </head>
 <body>
-    <h1>🚴🏼‍♀️ Bikewatching</h1>
+   
+    <header>
+        <h1>🚴🏼‍♀️ Wheel Watch</h1>
+        <label id="time-label">
+            Filter by time:
+            <input type="range" id="time-slider" min="-1" max="1440" value="-1" />
+            <div id="time-container">
+                <time id="selected-time"></time>
+                <em id="any-time">(any time)</em>
+            </div>
+        </label>
+    </header>
+    <div id="map">
+        <svg></svg>
+    </div>
+    <div class="legend">
+        <div class="legend-item" style="--departure-ratio: 1">More departures</div>
+        <div class="legend-item" style="--departure-ratio: 0.5">Balanced</div>
+        <div class="legend-item" style="--departure-ratio: 0">More arrivals</div>
+      </div>
+      
 </body>
 </html>
