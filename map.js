@@ -135,6 +135,15 @@ let stationFlow = d3.scaleQuantize().domain([0, 1]).range([0, 0.5, 1]);
         const timeSlider = document.getElementById('time-slider');
         const selectedTime = document.getElementById('selected-time');
         const anyTimeLabel = document.getElementById('any-time');
+        function updateSliderColor(value) {
+            const percent = ((value + 1) / 1441) * 100; // Calculate the percentage
+            timeSlider.style.setProperty('--slider-percent', percent + '%');
+        }
+        
+        // Event listener to update the color when the slider moves
+        timeSlider.addEventListener('input', function () {
+            updateSliderColor(Number(timeSlider.value));
+        });
 
         // Function to update the time display
         function updateTimeDisplay() {
